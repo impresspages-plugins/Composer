@@ -1,0 +1,7 @@
+{
+  "title": "Composer",
+  "version": "1.00",
+  "name": "Composer",
+  "description": "Add libraries to ImpressPages using Composer configuration",
+  "author": "ImpressPages"
+}
