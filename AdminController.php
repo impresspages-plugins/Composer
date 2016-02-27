@@ -47,37 +47,7 @@ class AdminController
         return ipView('view/admin.php', $params);
     }
 
-    public function clearCache()
-    {
-        return $this->executeComposer('clear-cache');
-    }
 
-    public function install()
-    {
-        return $this->executeComposer('install');
-    }
-
-
-    public function update()
-    {
-        return $this->executeComposer('update');
-    }
-
-
-    protected function executeComposer($command)
-    {
-        //create composer.json with some content
-        require_once 'composer-source/vendor/autoload.php';
-        putenv('COMPOSER_HOME=' . __DIR__ . '');
-        chdir(ipFile('Plugin/Composer'));
-        $stream = fopen('php://temp', 'w+');
-        $output = new StreamOutput($stream);
-        $application = new Application();
-        $application->setAutoExit(false);
-        $code = $application->run(new ArrayInput(array('command' => $command)), $output);
-        rewind($stream);
-        return nl2br(stream_get_contents($stream));
-    }
 
 }
 
