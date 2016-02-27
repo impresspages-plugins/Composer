@@ -1,4 +1,4 @@
-<Files "composer.json">
+<Files "composer.*">
 Order Allow,Deny
 Deny from all
 </Files>

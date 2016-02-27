@@ -3,7 +3,7 @@
  * @package   ImpressPages
  */
 
-namespace Plugin\Php;
+namespace Plugin\Composer;
 
 
 class CodeEditor extends \Ip\Form\Field
