@@ -16,61 +16,47 @@ namespace Plugin\Composer;
 use Composer\Console\Application;
 use Composer\Installer;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\StreamOutput;
 
 
 class AdminController
 {
+    public function index()
+    {
+
+    }
+
+    public function clearCache()
+    {
+        return $this->executeComposer('clear-cache');
+    }
 
     public function install()
     {
-        error_reporting(1);
-//        require_once (__DIR__ . '/comopser.phar');
-        require_once 'composer-source/vendor/autoload.php';
-
-        // Composer\Factory::getHomeDir() method
-        // needs COMPOSER_HOME environment variable set
-        putenv('COMPOSER_HOME=' . __DIR__ .'/composer-source/bin/composer');
-//        putenv('COMPOSER_HOME=' . __DIR__ . '/');
-
-        // call `composer install` command programmatically
-        $input = new ArrayInput(array('command' => 'install'));
-        echo $input->getFirstArgument();
-        $application = new Application();
-        $application->setCatchExceptions(true);
-        $application->setAutoExit(false); // prevent `$application->run` method from exitting the script
-//        $output = new OutputInterface();
-        $output = null;
-        $result = $application->run($input, $output);
-        echo $result;
-        echo $output . 'a';
-        echo 'tset';exit;
+        return $this->executeComposer('install');
     }
 
 
-
-    public function install2()
+    public function update()
     {
-        error_reporting(1);
-//        require_once (__DIR__ . '/comopser.phar');
-        require_once 'phar://' . __DIR__ . '/composer.phar/vendor/autoload.php';
+        return $this->executeComposer('update');
+    }
 
-        // Composer\Factory::getHomeDir() method
-        // needs COMPOSER_HOME environment variable set
-        putenv('COMPOSER_HOME=' . __DIR__ . '/composer.phar/bin/composer');
-//        putenv('COMPOSER_HOME=' . __DIR__ . '/');
 
-        // call `composer install` command programmatically
-        $input = new ArrayInput(array('command' => 'install'));
-        echo $input->getFirstArgument();
+    protected function executeComposer($command)
+    {
+        //create composer.json with some content
+        require_once 'composer-source/vendor/autoload.php';
+        putenv('COMPOSER_HOME=' . __DIR__ . '');
+        chdir(ipFile('Plugin/Composer'));
+        $stream = fopen('php://temp', 'w+');
+        $output = new StreamOutput($stream);
         $application = new Application();
-        $application->setCatchExceptions(true);
-        $application->setAutoExit(false); // prevent `$application->run` method from exitting the script
-//        $output = new OutputInterface();
-        $output = null;
-        $result = $application->run($input, $output);
-        echo $result;
-        echo $output . 'a';
-        echo 'tset';exit;
+        $application->setAutoExit(false);
+        $code = $application->run(new ArrayInput(array('command' => $command)), $output);
+        rewind($stream);
+        return nl2br(stream_get_contents($stream));
     }
 
 }
+

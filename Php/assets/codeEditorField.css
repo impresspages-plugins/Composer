@@ -1,0 +1,5 @@
+
+.ip .type-codeeditor .ace_editor,
+.ip .type-codeeditor .ace_editor * {
+    font: 12px "Monaco","Menlo","Ubuntu Mono","Consolas","source-code-pro",monospace;
+}

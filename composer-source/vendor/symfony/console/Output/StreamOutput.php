@@ -92,6 +92,7 @@ fflush($this->stream);
 
 protected function hasColorSupport()
 {
+ return false; //this method caused a warning on dev machine Mangirdas Skripka 2016-02-26
 if (DIRECTORY_SEPARATOR === '\\') {
 return false !== getenv('ANSICON') || 'ON' === getenv('ConEmuANSI') || 'xterm' === getenv('TERM');
 }

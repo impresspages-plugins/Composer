@@ -3,5 +3,11 @@
   "version": "1.00",
   "name": "Composer",
   "description": "Add libraries to ImpressPages using Composer configuration",
-  "author": "ImpressPages"
+  "author": "ImpressPages",
+  "options": [
+    {
+      "type": "Info",
+      "html": "<div>Please open <a href=\"?aa=Composer\">Admin -> Composer page</a> for configuration.</div>"
+    }
+  ]
 }
