@@ -14,9 +14,7 @@
         <a href="#" class="ipsSaveComposerJson btn btn-new hidden" title="Edit the composer.json file">Save</a>
         <a href="#" class="ipsCancelComposerJson btn btn-default hidden" title="Edit the composer.json file">Cancel</a>
     </p>
-    <p class="ipsComposerJsonPreview composerJsonPreview">
-        <?php echo nl2br($composerJson) ?>
-    </p>
+    <pre class="ipsComposerJsonPreview composerJsonPreview"><?php echo esc($composerJson)  ?></pre>
     <?php echo $form ?>
 </div>
 

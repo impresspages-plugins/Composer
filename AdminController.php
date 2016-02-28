@@ -39,7 +39,7 @@ class AdminController
         $field = new CodeEditor([
             'name' => 'rawCode',
             'layout' => Field::LAYOUT_NO_LABEL,
-            'value' => '',
+            'value' => Service::getConfig(),
             'mode' => 'json',
             'css' => 'ipPluginPhp-editor',
         ]);
@@ -52,11 +52,18 @@ class AdminController
         return ipView('view/admin.php', $params);
     }
 
+    public function saveConfig()
+    {
+        ipRequest()->mustBePost();
+        $config = ipRequest()->getPost('config');
+        Service::setConfig($config);
+    }
+
+
     public function install()
     {
         Service::install();
     }
-
 
 
 }

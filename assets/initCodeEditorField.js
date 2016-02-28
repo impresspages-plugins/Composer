@@ -19,6 +19,7 @@ $(document).on('ipInitForms', function () {
         aceEditor.getSession().setMode({path:"ace/mode/" + _mode, inline:true});
         aceEditor.setTheme("ace/theme/" + _theme); // Set Ace editor theme
         aceEditor.getSession().on('change', function () {
+            console.log(aceEditor.getSession().getValue());
             defaultTextareaEditor.val(aceEditor.getSession().getValue());
         });
     });

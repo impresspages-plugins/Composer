@@ -37,6 +37,13 @@ class Service
     public static function getConfig()
     {
         $model = new Model();
-        return $model->getConfig();
+        $config = $model->getConfig();
+        return $config;
+    }
+
+    public static function setConfig($config)
+    {
+        $model = new Model();
+        return $model->setConfig($config);
     }
 }

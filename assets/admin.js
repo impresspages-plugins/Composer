@@ -3,7 +3,21 @@ $(document).ready(function () {
     $('.ipsComposerCommand').on('click', function (e) {e.preventDefault(); executeComposerCommand($(this).data('command')); });
     $('.ipsEditComposerJson').on('click', function (e) {e.preventDefault(); editConfigJson(); });
     $('.ipsCancelComposerJson').on('click', function (e) {e.preventDefault(); location.reload();});
+    $('.ipsSaveComposerJson').on('click', function (e) {e.preventDefault(); saveConfigJson();});
 });
+
+function saveConfigJson() {
+    var config = $('textarea[data-mode]').val();
+    var data = {
+        securityToken: ip.securityToken,
+        aa: 'Composer.saveConfig',
+        config: config
+    };
+    $.post(ip.baseUrl, data, function (data) {
+        location.reload();
+    });
+
+}
 
 function editConfigJson() {
     $('.ipsSaveComposerJson').removeClass('hidden');
@@ -19,7 +33,7 @@ function executeComposerCommand(command) {
         securityToken: ip.securityToken,
         aa: 'Composer.' + command
     };
-    $.post(ip.baseUrl + "error_report.php", data, function (data) {
+    $.post(ip.baseUrl, data, function (data) {
         alert(data.response);
     });
 }
