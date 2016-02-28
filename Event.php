@@ -17,6 +17,9 @@ class Event
 
     public static function ipInitFinished_1()
     {
-//        new ArrayInput();
+        $autoloadFile = ipFile('file/secure/Composer/vendor/autoload.php');
+        if (is_file($autoloadFile)) {
+            require_once($autoloadFile);
+        }
     }
 }
