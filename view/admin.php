@@ -18,7 +18,7 @@
     <?php echo $form ?>
 </div>
 <div class="loader hidden ipsLoader">
-
+    <p>This may take several minutes...</p>
 </div>
 
 <?php echo ipView('responseModal.php'); ?>
