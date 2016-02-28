@@ -11,7 +11,6 @@ class Worker extends \Ip\SetupWorker
     public function activate() {
         $model = new Model();
         $model->init();
-
     }
 
     public function deactivate() {}

@@ -30,15 +30,23 @@ class Model
             mkdir($this->dir);
         }
         if (!is_file($this->composerFile)) {
-            $this->saveComposerConfiguration("{\n\n}");
+            $this->setConfig("{\n\n}");
         }
     }
 
-    public function saveComposerConfiguration($configuration)
+    public function setConfig($configuration)
     {
         $f = fopen($this->composerFile, "w");
         fwrite($f, $configuration);
         fclose($f);
+    }
+
+    public function getConfig()
+    {
+        if (!is_file($this->composerFile)) {
+            return '';
+        }
+        return file_get_contents($this->composerFile);
     }
 
     public function clearCache()

@@ -13,7 +13,6 @@
 
 namespace Plugin\Composer;
 
-use Composer\Console\Application;
 use Composer\Installer;
 use Ip\Form;
 use Ip\Form\Field;
@@ -30,8 +29,13 @@ class AdminController
         ipAddJs('assets/src-noconflict/ace.js');
         ipAddJs('assets/initCodeEditorField.js');
 
+        ipAddCss('assets/admin.css');
+        ipAddJs('assets/admin.js');
+
         $form = new Form();
-        $form->addClass('composerConfigForm');
+        $form->addClass('composerJsonForm');
+        $form->addClass('ipsComposerJsonForm');
+        $form->addClass('hidden');
         $field = new CodeEditor([
             'name' => 'rawCode',
             'layout' => Field::LAYOUT_NO_LABEL,
@@ -42,9 +46,15 @@ class AdminController
         $form->addField($field);
 
         $params = [
+            'composerJson' => Service::getConfig(),
             'form' => $form
         ];
         return ipView('view/admin.php', $params);
+    }
+
+    public function install()
+    {
+        Service::install();
     }
 
 

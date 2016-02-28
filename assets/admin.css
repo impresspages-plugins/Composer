@@ -1,0 +1,14 @@
+
+.illustration {
+    float: left;
+}
+
+.commandCenter {
+    margin-left: 468px;
+}
+
+.composerJsonPreview {
+    background-color: #ccc;
+    padding: 10px;
+    color: #333;
+}
