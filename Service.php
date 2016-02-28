@@ -28,6 +28,13 @@ class Service
         return $model->clearCache();
     }
 
+
+    public static function version()
+    {
+        $model = new Model();
+        return $model->version();
+    }
+
     public static function update()
     {
         $model = new Model();

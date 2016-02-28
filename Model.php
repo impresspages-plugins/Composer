@@ -69,6 +69,15 @@ class Model
         return $this->executeComposer('update');
     }
 
+    public functIon version()
+    {
+        require_once 'composer-source/vendor/autoload.php';
+        putenv('COMPOSER_HOME=' . ipFile('file/secure/Composer') . '');
+        chdir(ipFile('file/secure/Composer'));
+        $application = new Application();
+        return $application->getLongVersion();
+    }
+
 
     protected function executeComposer($command)
     {

@@ -74,6 +74,9 @@ class AdminController
             case 'clearcache':
                 $answer = Service::clearCache();
                 break;
+            case 'version':
+                $answer = Service::version();
+                break;
             default:
                 throw new \Ip\Exception('Unknown Composer command');
 

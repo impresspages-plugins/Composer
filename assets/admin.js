@@ -1,9 +1,10 @@
 $(document).ready(function () {
     "use strict";
-    $('.ipsComposerCommand').on('click', function (e) {e.preventDefault(); executeComposerCommand($(this).data('command')); });
+    $('.ipsComposerCommand').on('click', function (e) {e.preventDefault(); executeComposerCommand($(this).data('command'), displayReponse); });
     $('.ipsEditComposerJson').on('click', function (e) {e.preventDefault(); editConfigJson(); });
     $('.ipsCancelComposerJson').on('click', function (e) {e.preventDefault(); location.reload();});
     $('.ipsSaveComposerJson').on('click', function (e) {e.preventDefault(); saveConfigJson();});
+
 });
 
 function saveConfigJson() {
@@ -28,17 +29,27 @@ function editConfigJson() {
     $('.ipsCancelComposerJson').removeClass('hidden');
 }
 
-function executeComposerCommand(command) {
+function executeComposerCommand(command, callback) {
+    $('.ipsCommandCenter').addClass('hidden');
+    $('.ipsLoader').removeClass('hidden');
     var data = {
         securityToken: ip.securityToken,
         aa: 'Composer.executeComposerCommand',
         command: command
     };
     $.post(ip.baseUrl, data, function (data) {
-        var $modal = $('.ipsResumeModal');
-        $modal.find('.ipsOk').off().on('click', function () {$modal.modal('hide');});
-        $modal.find('.ipsModalBody').html(data.result);
-        $modal.modal();
+        callback(data.result);
     });
+
+}
+
+function displayReponse(response)
+{
+    $('.ipsCommandCenter').removeClass('hidden');
+    $('.ipsLoader').addClass('hidden');
+    var $modal = $('.ipsResumeModal');
+    $modal.find('.ipsOk').off().on('click', function () {$modal.modal('hide');});
+    $modal.find('.ipsModalBody').html(response);
+    $modal.modal();
 
 }

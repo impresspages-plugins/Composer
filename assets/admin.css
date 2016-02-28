@@ -7,8 +7,16 @@
     margin-left: 468px;
 }
 
+.loader {
+    margin-left: 468px;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-image: url('loading.gif');
+    min-height: 200px;
+}
 .composerJsonPreview {
     background-color: #ccc;
     padding: 10px;
     color: #333;
 }
+

@@ -1,6 +1,6 @@
 <img class="illustration" src="<?php echo ipFileUrl('Plugin/Composer/assets/icon.png') ?>" alt="Composer"/>
 
-<div class="commandCenter">
+<div class="commandCenter ipsCommandCenter">
     <p>
         <a href="#" data-command="install" class="ipsComposerCommand btn btn-new" title="The main command. You should use it for sure">Install</a>
         <a href="#" data-command="update" class="ipsComposerCommand btn btn-default" title="If you don't specify library version in config, Composer will look if there are any updates available.">Update</a>
@@ -16,6 +16,9 @@
     </p>
     <pre class="ipsComposerJsonPreview composerJsonPreview"><?php echo esc($composerJson)  ?></pre>
     <?php echo $form ?>
+</div>
+<div class="loader hidden ipsLoader">
+
 </div>
 
 <?php echo ipView('responseModal.php'); ?>

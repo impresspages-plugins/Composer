@@ -6,6 +6,7 @@
                 <h4 class="modal-title"><?php _e('Administrator profile', 'Ip-admin'); ?></h4>
             </div>
             <div class="modal-body">
+                <h3>Composer command response:</h3>
                 <div class="ipsModalBody">
 
                 </div>
