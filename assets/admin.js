@@ -31,7 +31,8 @@ function editConfigJson() {
 function executeComposerCommand(command) {
     var data = {
         securityToken: ip.securityToken,
-        aa: 'Composer.' + command
+        aa: 'Composer.executeComposerCommand',
+        command: command
     };
     $.post(ip.baseUrl, data, function (data) {
         var $modal = $('.ipsResumeModal');

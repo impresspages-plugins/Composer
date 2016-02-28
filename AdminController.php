@@ -59,10 +59,26 @@ class AdminController
     }
 
 
-    public function install()
+    public function executeComposerCommand()
     {
         ipRequest()->mustBePost();
-        $answer = Service::install();
+        $command = ipRequest()->getPost('command');
+
+        switch ($command) {
+            case 'install':
+                $answer = Service::install();
+                break;
+            case 'update':
+                $answer = Service::update();
+                break;
+            case 'clearcache':
+                $answer = Service::clearCache();
+                break;
+            default:
+                throw new \Ip\Exception('Unknown Composer command');
+
+        }
+
         $answer = nl2br(esc($answer));
         $result = [
             'result' => $answer
