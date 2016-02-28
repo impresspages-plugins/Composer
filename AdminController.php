@@ -62,7 +62,7 @@ class AdminController
 
     public function install()
     {
-        Service::install();
+        return Service::install();
     }
 
 

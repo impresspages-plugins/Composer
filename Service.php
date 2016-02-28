@@ -19,19 +19,19 @@ class Service
     public static function install()
     {
         $model = new Model();
-        $model->install();
+        return $model->install();
     }
 
     public static function clearCache()
     {
         $model = new Model();
-        $model->clearCache();
+        return $model->clearCache();
     }
 
     public static function update()
     {
         $model = new Model();
-        $model->update();
+        return $model->update();
     }
 
     public static function getConfig()

@@ -14,6 +14,10 @@
 namespace Plugin\Composer;
 
 
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\StreamOutput;
+
 class Model
 {
     protected $dir;
@@ -70,13 +74,14 @@ class Model
     {
         //create composer.json with some content
         require_once 'composer-source/vendor/autoload.php';
-        putenv('COMPOSER_HOME=' . __DIR__ . '');
-        chdir(ipFile('file/Composer'));
+        putenv('COMPOSER_HOME=' . ipFile('file/secure/Composer') . '');
+        chdir(ipFile('file/secure/Composer'));
         $stream = fopen('php://temp', 'w+');
         $output = new StreamOutput($stream);
         $application = new Application();
         $application->setAutoExit(false);
-        $code = $application->run(new ArrayInput(array('command' => $command)), $output);
+        $input = new ArrayInput(array('command' => $command));
+        $code = $application->run($input, $output);
         rewind($stream);
         return nl2br(stream_get_contents($stream));
     }
