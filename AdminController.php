@@ -16,8 +16,6 @@ namespace Plugin\Composer;
 use Composer\Installer;
 use Ip\Form;
 use Ip\Form\Field;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\StreamOutput;
 
 
 class AdminController
@@ -62,6 +60,7 @@ class AdminController
 
     public function install()
     {
+        ipRequest()->mustBePost();
         return Service::install();
     }
 

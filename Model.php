@@ -14,7 +14,7 @@
 namespace Plugin\Composer;
 
 
-use Symfony\Component\Console\Application;
+use Composer\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\StreamOutput;
 
