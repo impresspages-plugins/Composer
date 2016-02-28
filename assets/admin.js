@@ -34,6 +34,10 @@ function executeComposerCommand(command) {
         aa: 'Composer.' + command
     };
     $.post(ip.baseUrl, data, function (data) {
-        alert(data.response);
+        var $modal = $('.ipsResumeModal');
+        $modal.find('.ipsOk').off().on('click', function () {$modal.modal('hide');});
+        $modal.find('.ipsModalBody').html(data.result);
+        $modal.modal();
     });
+
 }

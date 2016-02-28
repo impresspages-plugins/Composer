@@ -18,3 +18,4 @@
     <?php echo $form ?>
 </div>
 
+<?php echo ipView('responseModal.php'); ?>

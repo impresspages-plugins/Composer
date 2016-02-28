@@ -16,6 +16,7 @@ namespace Plugin\Composer;
 use Composer\Installer;
 use Ip\Form;
 use Ip\Form\Field;
+use Ip\Response\Json;
 
 
 class AdminController
@@ -61,7 +62,12 @@ class AdminController
     public function install()
     {
         ipRequest()->mustBePost();
-        return Service::install();
+        $answer = Service::install();
+        $answer = nl2br(esc($answer));
+        $result = [
+            'result' => $answer
+        ];
+        return new Json($result);
     }
 
 

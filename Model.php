@@ -83,6 +83,6 @@ class Model
         $input = new ArrayInput(array('command' => $command));
         $code = $application->run($input, $output);
         rewind($stream);
-        return nl2br(stream_get_contents($stream));
+        return stream_get_contents($stream);
     }
 }
