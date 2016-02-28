@@ -2,8 +2,8 @@
 
 <div class="commandCenter ipsCommandCenter">
     <p>
-        <a href="#" data-command="install" class="ipsComposerCommand btn btn-new" title="The main command. You should use it for sure">Install</a>
-        <a href="#" data-command="update" class="ipsComposerCommand btn btn-default" title="If you don't specify library version in config, Composer will look if there are any updates available.">Update</a>
+        <a href="#" data-command="install" class="ipsComposerCommand btn btn-new" title="Composer install">Install</a>
+        <a href="#" data-command="update" class="ipsComposerCommand btn btn-default" title="Composer update">Update</a>
         <a href="#" data-command="clearCache" class="ipsComposerCommand btn btn-default" title="Something don't work as expected? Try to clear the cache.">Clear cache</a>
     </p>
     <p>All these commands will be passed directly to the composer as if you run them from the command line.</p>
